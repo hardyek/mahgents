@@ -18,4 +18,4 @@ winner = game.game_loop_rendered(renderer,clock)
 
 print(f"Player {winner} has won.")
 
-pygame.quit()
+pygame.quit()  

@@ -32,8 +32,8 @@ class Human():
 
     def make_pickup(self,item,observations):
         if item[1] == 0: # Pong
-            self.make_pong(observations)
+            return self.make_pong(observations)
         elif item[1] == 1: # Kong
-            self.make_kong(observations)
+            return self.make_kong(observations)
         elif item[1] == 2: # Chow
-            self.make_chow(observations)
+            return self.make_chow(observations)

@@ -2,9 +2,9 @@ from mahgym.game import MahjongGame
 from mahgym.renderer import MahjongRenderer
 import pygame
 
-from agents.human.agent import Human
+from agents.random_rendered.agent import RandomRendered
 
-agent_array = [Human(),Human(),Human(),Human()]
+agent_array = [RandomRendered(),RandomRendered(),RandomRendered(),RandomRendered()]
 
 renderer = MahjongRenderer()
 game = MahjongGame(agent_array)

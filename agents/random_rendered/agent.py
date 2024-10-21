@@ -1,7 +1,7 @@
 import time
 import random
 
-class Human():
+class RandomRendered():
     def __init__(self):
         pass
 
@@ -11,7 +11,7 @@ class Human():
         # processing ...
         print(f"Discard tile: {hand} : ")
         time.sleep(0.25)
-        action = random.randint(0,13)
+        action = random.randint(0,(len(hand)-1))
         print(f"Discard action made: {action}")
         time.sleep(0.25)
         return action

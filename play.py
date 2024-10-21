@@ -14,8 +14,9 @@ clock = pygame.time.Clock()
 
 renderer.render_game(game)
 
-winner = game.game_loop_rendered(renderer,clock)
+winner, winning_hand = game.game_loop_rendered(renderer,clock)
 
 print(f"Player {winner} has won.")
+print(f"With hand : {winning_hand}")
 
 pygame.quit()  

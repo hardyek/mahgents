@@ -6,7 +6,7 @@ class Random():
         pass
 
     def make_discard(self,observations,player):
-        print(f"Player {player}")
+        print(f"DISCARD Player {player}")
         pile,hand,exposed,specials,wind = observations
         # processing ...
         action = random.randint(0,(len(hand)-1))
@@ -31,7 +31,7 @@ class Random():
         return action
 
     def make_pickup(self,item,observations,player):
-        print(f"Player {player}")
+        print(f"PICKUP Player {player}")
         if item[1] == 0: # Pong
             return self.make_pong(observations)
         elif item[1] == 1: # Kong

@@ -6,15 +6,19 @@ from agents.random.agent import Random
 
 agent_array = [Random(),Random(),Random(),Random()]
 
-renderer = MahjongRenderer()
+#renderer = MahjongRenderer()
+
 game = MahjongGame(agent_array)
 game.initialise_game()
 
-clock = pygame.time.Clock()
+#clock = pygame.time.Clock()
 
-renderer.render_game(game)
+#renderer.render_game(game)
 
-winner, winning_hand = game.game_loop_rendered(renderer,clock)
+winner, winning_hand = game.game_loop()
+
+print(len(game.deck))
+print(len(game.pile))
 
 print(f"Player {winner} has won.")
 print(f"With hand : {winning_hand}")

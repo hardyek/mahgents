@@ -1,0 +1,21 @@
+pile List[int]
+0 - 83 Item Array of integers 1 - 34
+
+hand List[int]
+
+1 - 14 Item Array of integers 1 - 34
+
+exposed List[List[List[int]]]
+
+Array of 4 Arrays of Melds
+If flattened has the maximum length 64 (16 tiles for 4 Kongs and 4 maximum exposed melds across 4 players)
+
+specials List[List[int]]
+Array of 4 Arrays of Special tiles (integers 35 - 42)
+If flattened has the maximum length 32 (8 Maximum special ties across 4 players))
+
+wind int
+0 - 3
+
+total action space
+length is 83 + 14 + 64 + 32 + 1 = 194

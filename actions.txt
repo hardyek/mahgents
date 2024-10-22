@@ -1,0 +1,10 @@
+Discard 
+14 Value Categorical Action 
+
+Discard tile 0-13 from the deck.
+
+Can be less if the players hand is smaller than 14.
+
+Pung/Gong/Soeng
+
+Binary do (1) or don't (0) Pung/Gong/Soeng

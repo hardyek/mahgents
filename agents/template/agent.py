@@ -8,29 +8,29 @@ class Agent():
         action = ...
         return action
 
-    def make_pong(self,observations):
+    def make_pung(self,observations):
         pile,hand,exposed,specials,wind = observations
         # processing ...
         action = ...
         return action
     
-    def make_kong(self,observations):
+    def make_gong(self,observations):
         pile,hand,exposed,specials,wind = observations
         # Processing
         action = ...
         return action
 
-    def make_chow(self,observations):
+    def make_soeng(self,observations):
         pile,hand,exposed,specials,wind = observations
         # Processing
         action = ...
         return action
 
     def make_pickup(self,item,observations,player):
-        if item[1] == 0: # Pong
-            action = self.make_pong(observations)
-        elif item[1] == 1: # Kong
-            action = self.make_kong(observations)
-        elif item[1] == 2: # Chow
-            action = self.make_chow(observations)
+        if item[1] == 0: # Pung
+            action = self.make_pung(observations)
+        elif item[1] == 1: # Gong
+            action = self.make_gong(observations)
+        elif item[1] == 2: # Soeng
+            action = self.make_soeng(observations)
         return action

@@ -8,7 +8,7 @@ hand List[int]
 exposed List[List[List[int]]]
 
 Array of 4 Arrays of Melds
-If flattened has the maximum length 64 (16 tiles for 4 Kongs and 4 maximum exposed melds across 4 players)
+If flattened has the maximum length 64 (16 tiles for 4 Gongs and 4 maximum exposed melds across 4 players)
 
 specials List[List[int]]
 Array of 4 Arrays of Special tiles (integers 35 - 42)

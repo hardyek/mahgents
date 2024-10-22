@@ -1,5 +1,5 @@
 pile List[int]
-0 - 83 Item Array of integers 1 - 34
+0 - 84 Item Array of integers 1 - 34
 
 hand List[int]
 
@@ -18,4 +18,4 @@ wind int
 0 - 3
 
 total action space
-length is 83 + 14 + 64 + 32 + 1 = 194
+length is 84 + 14 + 64 + 32 + 1 = 195

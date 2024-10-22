@@ -31,7 +31,7 @@ class Random():
         return action
 
     def make_pickup(self,item,observations,player):
-        print(f"PICKUP Player {player}")
+        print(f"PICKUP  Player {player}")
         if item[1] == 0: # Pong
             return self.make_pong(observations)
         elif item[1] == 1: # Kong

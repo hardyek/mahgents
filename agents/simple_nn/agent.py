@@ -1,74 +1,65 @@
 import torch
-import torch.nn as nn
 
-"""
-simple_nn
-Cut down the observation space to just the most relevant information,
-this means that for the binary action spaces (pickups) the observation space is:
-
-    hand - 13 tiles in the players hand
-    takable (pile[-1]) - The tile the player can pick up
-
-    Overall observation space is 14 integers
-
-For the discard action space the observation space is just
-
-    hand - 14 tiles in the players hand
-    pile[:-5] - the last 5 items placed into the pile
-    len(pile) - the length (size) of the pile
-
-    Overall observation space is 20 integers
-"""
-
-class BinaryActionModel(nn.Module):
-    def __init__(self):
-        super(BinaryActionModel, self).__init__()
-
-        self.input = nn.Linear(14,20)
-        self.fc1 = nn.Linear(20,20)
-        self.fc2 = nn.Linear(20,10)
-        self.out = nn.Linear(10,1)
-
-    def forward(self, x):
-        x = nn.ReLU(self.input(x))
-        x = nn.ReLU(self.fc1(x))
-        x = nn.ReLU(self.fc2(x))
-        x = nn.ReLU(self.fc2(x))
-        x = nn.ReLU(self.fc2(x))
-        x = nn.Sigmoid(self.out(x))
-
-class DiscardModel(nn.Module):
-    def __init__(self):
-        super(DiscardModel, self).__init__()
-        
+from models import DiscardModel, BinaryActionModel
 
 class Agent():
     def __init__(self):
-
-        pass
+        self.discard_model = DiscardModel()
+        self.pung_model = BinaryActionModel()
+        self.gong_model = BinaryActionModel()
+        self.seong_model = BinaryActionModel()
 
     def make_discard(self,observations,player):
         pile,hand,exposed,specials,wind = observations
-        # processing ...
-        action = ...
+
+        processed_hand = torch.tensor(hand, dtype=torch.float32)
+        pile_history = torch.tensor(pile[-5:] if len(pile) >= 5 else pile + [0] * (5 - len(pile)), dtype=torch.float32)
+        pile_length = torch.tensor([len(pile)], dtype=torch.float32)
+
+        observation = torch.cat([processed_hand, pile_history, pile_length])
+
+        probabilities = self.discard_model(observation)
+        
+        action = torch.argmax(probabilities).item()
         return action
 
     def make_pung(self,observations):
         pile,hand,exposed,specials,wind = observations
-        # processing ...
-        action = ...
+
+        processed_hand = torch.tensor(hand, dtype=torch.float32)
+        takable = torch.tensor([pile[-1]], dtype=torch.float32)
+
+        observation = torch.cat([processed_hand, takable])
+
+        output = self.pung_model(observations)
+
+        action = output.item() > 0.5
         return action
     
     def make_gong(self,observations):
         pile,hand,exposed,specials,wind = observations
-        # Processing
-        action = ...
+
+        processed_hand = torch.tensor(hand, dtype=torch.float32)
+        takable = torch.tensor([pile[-1]], dtype=torch.float32)
+
+        observation = torch.cat([processed_hand, takable])
+
+        output = self.gong_model(observations)
+
+        action = output.item() > 0.5
         return action
 
     def make_soeng(self,observations):
         pile,hand,exposed,specials,wind = observations
-        # Processing
-        action = ...
+        
+        processed_hand = torch.tensor(hand, dtype=torch.float32)
+        takable = torch.tensor([pile[-1]], dtype=torch.float32)
+
+        observation = torch.cat([processed_hand, takable])
+
+        output = self.gong_model(observations)
+
+        action = output.item() > 0.5
         return action
 
     def make_pickup(self,item,observations,player):
